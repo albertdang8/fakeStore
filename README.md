@@ -1,2 +1,0 @@
-# fakeStore
-First react project
