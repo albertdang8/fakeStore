@@ -1,0 +1,29 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px;
+    /* border: 1px solid cornflowerblue; */
+  }
+  
+  .title {
+    text-decoration: none;
+    color: #3A4895;
+    font-size: 1.5rem;
+    font-weight: 800;
+  }
+  
+  .cart-container {
+    position: relative;
+  }
+  
+  .cart-icon {
+    height: min(25px);
+  }
+  
+  .dot {
+    height: 1rem;
+    position: absolute;
+    top: -5px;
+    left: 10px;
+  }
