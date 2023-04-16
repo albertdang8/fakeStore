@@ -1,5 +1,6 @@
-import React from 'react'
-import './Header.css'
+import React from 'react';
+import './Header.css';
+import { BsCart3 } from 'react-icons/bs';
 
 function Header() {
   return (
@@ -7,8 +8,11 @@ function Header() {
       <nav>
         <a href="#" className="title">Fake Store</a>
         <a href="#" className="cart-container">
-          <img src="./public/vector.png" alt="shopping cart" className='cart-icon' />
-          <img src="./public/dot.png" alt="dot" className="dot" />
+          <BsCart3 size={'2rem'} alt="shopping cart" className='cart-icon' />
+          <div className="cart-size">
+            <img src="src\assets\dot.png" alt="dot" className="dot" />
+            <p id='cart-number'>1</p>
+          </div>
         </a>
       </nav>
     </div>

@@ -3,7 +3,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 25px;
-    /* border: 1px solid cornflowerblue; */
+    border: 1px solid cornflowerblue;
   }
   
   .title {
@@ -18,12 +18,22 @@ nav {
   }
   
   .cart-icon {
-    height: min(25px);
+    min-height: auto;
   }
   
-  .dot {
+  .cart-size {
     height: 1rem;
     position: absolute;
-    top: -5px;
-    left: 10px;
+    top: -2px;
+    left: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #cart-number {
+    position: relative;
+    color: whitesmoke;
+    font-size: .75rem;
+    right: 13px;
   }
