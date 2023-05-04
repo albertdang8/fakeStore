@@ -1,0 +1,21 @@
+.footerContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3A4895;
+    height: min(65px);
+    padding: 0 2rem;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    font-size: 12px;
+}
+
+.caption {
+    color: #FCFCFC;
+}
+
+.contact {
+    text-decoration: none;
+    color: #FCFCFC;
+}
