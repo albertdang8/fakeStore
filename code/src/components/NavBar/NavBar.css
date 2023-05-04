@@ -1,0 +1,10 @@
+.categories {
+    display: flex;
+}
+
+.navBar {
+    text-decoration: none;
+    color: #5264C3;
+    font-size: 1.25rem;
+    margin: 20px 28px 20px 0
+}
