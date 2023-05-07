@@ -1,5 +1,3 @@
-// this is an offline reference to the FakeStoreAPI to help visualize and navigate the API object. It should and will not be used in the final product. Instead a fetch should be used. Thank you.
-
 [
   {
     "id": 1,
