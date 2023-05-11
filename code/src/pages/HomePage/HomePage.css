@@ -1,3 +1,7 @@
-.pageBody {
+.page-body {
     margin: 0 130px;
+}
+
+.product-list {
+    display: flex;
 }
