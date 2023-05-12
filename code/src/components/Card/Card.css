@@ -3,28 +3,40 @@
 }
 
 .card {
-    border: 1px solid #E7E7E7;
+    /* border: 1px solid #E7E7E7; */
     width: 10rem;
     margin: 2rem;
     display: flex;
     flex-direction: column;
-    margin-bottom: 6rem;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
 }
 
 .card img {
     border: 1px solid #E7E7E7;
     border-radius: .75rem;
-    aspect-ratio: 1/1.2;
+    aspect-ratio: 1/1;
     object-fit: contain;
     width: max(9rem);
     background-color: #FFFFFF;
+    margin-bottom: .75rem;
 }
 
 .title {
-    font-size: 1rem;
+    font-size: 12px;
+    color: #282828;
+    margin-bottom: 4px;
 }
 
 .category {
-    font-size: .75rem;
+    font-size: 10px;
     color: #949494;
+    margin-bottom: .75rem;
+}
+
+.price {
+    font-size: 12px;
 }
