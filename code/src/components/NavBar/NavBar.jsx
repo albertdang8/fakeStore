@@ -1,10 +1,7 @@
 import React from "react";
 import "./NavBar.css";
 
-// The <NavBar /> component is used within the Body
-
 function NavBar(props) {
-  //a function to capitalize words
   function capitalizeWords(str) {
     return str
       .split(" ")
@@ -12,7 +9,6 @@ function NavBar(props) {
       .join(" ");
   }
 
-  //listing out the categories, then returning the capitalized versions.
   const categories = [
     ...new Set(props.data.map((item) => capitalizeWords(item.category))),
   ];
@@ -21,8 +17,8 @@ function NavBar(props) {
     <div className="categories">
       <a href="#" className="navBar">{capitalizeWords("all")}</a>
       {categories.map((category) => (
-        <a href="#" className="navBar">
-          {category}
+        <a key={category} href="#" className="navBar">
+          {capitalizeWords(category)}
         </a>
       ))}
     </div>

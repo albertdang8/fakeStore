@@ -1,8 +1,8 @@
 import React from "react";
 import "./Card.css";
 
-function Card(props) {
-  const { image, title, category, price } = props.product;
+function Card({ product }) {
+  const { image, title, category, price } = product;
   return (
     <div className="card">
       <div className="center">
