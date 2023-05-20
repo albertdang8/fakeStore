@@ -37,3 +37,11 @@
   font-size: .75rem;
   right: 13px;
 }
+
+@media screen and (max-width: 768px) {
+  /* TabletCSS goes here*/
+}
+
+@media screen and (max-width: 480px) {
+  /* Mobile CSS goes here*/
+}

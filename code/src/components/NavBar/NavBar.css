@@ -8,3 +8,11 @@
     font-size: 1.25rem;
     margin: 20px 28px 20px 0
 }
+
+@media screen and (max-width: 768px) {
+    /* TabletCSS goes here*/
+}
+
+@media screen and (max-width: 480px) {
+    /* Mobile CSS goes here*/
+}
