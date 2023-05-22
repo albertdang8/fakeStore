@@ -9,7 +9,7 @@ function HomePage() {
 
   useEffect(() => {
     axios
-      .get("https://fakestoreapi.com/products")
+      .get(`https://fakestoreapi.com/products`)
       .then((res) => {
         console.log(res.data);
         setProducts(res.data);
