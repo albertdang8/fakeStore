@@ -11,11 +11,11 @@ function HomePage() {
     axios
       .get(`https://fakestoreapi.com/products`)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setProducts(res.data);
       })
       .catch((error) => {
-        console.log("Error:", error.message);
+        console.log("Error:", error);
       });
   }, []);
 

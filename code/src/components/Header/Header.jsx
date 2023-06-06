@@ -1,13 +1,14 @@
 import React from "react";
 import "./Header.css";
 import { BsCart3 } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
     <nav className="navHead">
-      <a href="#" className="main-title">
+      <Link to={"/"} className="main-title">
         Fake Store
-      </a>
+      </Link>
       <a href="#" className="cart-container">
         <BsCart3 size={32} alt="shopping cart" className="cart-icon" />
         <div className="cart-size">
