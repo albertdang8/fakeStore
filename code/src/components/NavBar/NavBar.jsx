@@ -15,11 +15,11 @@ function NavBar(props) {
 
   return (
     <div className="categories">
-      <a href="#" className="navBar">{capitalizeWords("all")}</a>
+      <button className="navBar">{capitalizeWords("all")}</button>
       {categories.map((category) => (
-        <a key={category} href="#" className="navBar">
+        <button key={category} href="#" className="navBar">
           {capitalizeWords(category)}
-        </a>
+        </button>
       ))}
     </div>
   );
