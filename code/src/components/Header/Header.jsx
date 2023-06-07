@@ -9,13 +9,13 @@ function Header() {
       <Link to={"/"} className="main-title">
         Fake Store
       </Link>
-      <a href="#" className="cart-container">
-        <BsCart3 size={32} alt="shopping cart" className="cart-icon" />
+        <Link to="/checkout" className="cart-container">
+          <BsCart3 size={32} alt="shopping cart" className="cart-icon" />
         <div className="cart-size">
           <img src="src\assets\dot.png" alt="dot" className="dot" />
           <p id="cart-number">1</p>
         </div>
-      </a>
+        </Link>
     </nav>
   );
 }

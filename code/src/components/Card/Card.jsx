@@ -1,13 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Card.css";
 
 function Card({ product }) {
   const { image, title, category, price } = product;
   return (
     <div className="card">
-      <div className="img-container center">
+      <Link to='/details' className="img-container center">
         <img src={image} alt={title} />
-      </div>
+      </Link>
       <h3 className="title">{title}</h3>
       <h4 className="category">{category}</h4>
       <p className="price">{price}</p>
