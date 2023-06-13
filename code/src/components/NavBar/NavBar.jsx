@@ -17,7 +17,7 @@ function NavBar(props) {
     <div className="categories">
       <button className="navBar">{capitalizeWords("all")}</button>
       {categories.map((category) => (
-        <button key={category} href="#" className="navBar">
+        <button style={{whiteSpace: 'nowrap'}} key={category} href="#" className="navBar">
           {capitalizeWords(category)}
         </button>
       ))}

@@ -1,0 +1,55 @@
+.page {
+    height: min(80vh);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-container {
+    width: max(60%);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.product-img {
+    height: 24rem;
+}
+
+.product-info {
+    width: max(40%);
+    margin-left: 4rem;
+}
+
+#title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+#price {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+}
+
+#sub-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+#description {
+    margin-bottom: 1rem;
+}
+
+#add {
+    border: none;
+    padding: 1rem 2rem;
+    background-color: #FFD814;
+    cursor: pointer;
+}
+
+#add:hover {
+    background-color: antiquewhite;
+}
