@@ -27,8 +27,13 @@ export default function CartContextProvider(props) {
     localStorage.setItem("cart", JSON.stringify(newCart));
   };
 
+  const clearCart = () => {
+    setCart([]);
+    localStorage.removeItem("cart");
+  };
+
   return (
-    <CartContext.Provider value={{ cart, addItem, removeItem }}>
+    <CartContext.Provider value={{ cart, addItem, removeItem, clearCart }}>
       {props.children}
     </CartContext.Provider>
   );
