@@ -6,23 +6,32 @@ import "./HomePage.css";
 
 function HomePage() {
   const [products, setProducts] = useState([]); //gather all products
-  const [selectedCategory, setSelectedCategory] = useState(null); //filtered products
+  const [selectedCategory, setSelectedCategory] = useState('all');
 
   useEffect(() => {
+    let apiUrl = 'https://fakestoreapi.com/products/';
+    if (selectedCategory !== 'all') {
+      apiUrl += `/category/${selectedCategory}`;
+    }
+
     axios
-      .get(`https://fakestoreapi.com/products`)
+      .get(apiUrl)
       .then((res) => {
-        // console.log(res.data);
+        console.log(res.data)
         setProducts(res.data);
       })
       .catch((error) => {
         console.log("Error:", error);
       });
-  }, []);
+  }, [selectedCategory]);
+
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(category);
+  };
 
   return (
     <div className="page-body">
-      <NavBar data={products} />
+      <NavBar data={products} onCategoryClick={handleCategoryClick} />
       <div className="product-list">
         {products.map((product) => (
           <Card key={product.id} product={product} />

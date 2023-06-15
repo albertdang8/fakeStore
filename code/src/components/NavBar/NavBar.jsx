@@ -10,14 +10,19 @@ function NavBar(props) {
   }
 
   const categories = [
+    "all",
     ...new Set(props.data.map((item) => capitalizeWords(item.category))),
   ];
 
   return (
     <div className="categories">
-      <button className="navBar">{capitalizeWords("all")}</button>
       {categories.map((category) => (
-        <button style={{whiteSpace: 'nowrap'}} key={category} href="#" className="navBar">
+        <button
+          style={{ whiteSpace: "nowrap" }}
+          key={category}
+          className="navBar"
+          onClick={() => props.onCategoryClick(category)}
+        >
           {capitalizeWords(category)}
         </button>
       ))}
