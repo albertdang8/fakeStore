@@ -8,17 +8,15 @@
 }
 
 .footer-content {
-    white-space: nowrap;
-}
-
-.icon {
-    vertical-align: middle;
-}
-
-.footer p {
+    display: flex;
     color: #fcfcfc;
     font-size: 12px;
     font-weight: 400;
+}
+
+.icon {
+    align-self: center;
+    margin: 0 2px;
 }
 
 .footer a {

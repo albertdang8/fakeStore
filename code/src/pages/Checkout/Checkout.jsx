@@ -60,10 +60,10 @@ function Cart() {
             {cart.map((item, index) => (
               <tr key={index}>
                 <td className="item">
-                  <img src={item.image} alt="" />
+                  <img src={item.image} alt={item.title} />
                   {item.title}
                 </td>
-                <td>$ {item.price.toFixed(2)}</td>
+                <td className="nowrap">$ {item.price.toFixed(2)}</td>
                 <td>1</td>
                 <td>
                   <BsTrash onClick={() => removeItem(item.id)} />
