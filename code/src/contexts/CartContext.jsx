@@ -46,6 +46,7 @@ export default function CartContextProvider({ children }) {
   };
 
   const things = {
+    setCart,
     cart,
     addItem,
     removeItem,

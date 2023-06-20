@@ -12,7 +12,7 @@ function Header() {
       <Link to="/">
         <h2>Fake Store</h2>
       </Link>
-      <Link to="/cart">
+      <Link to="/checkout">
         <AiOutlineShoppingCart className="cart-item" />
         <span>{cart.length}</span>
       </Link>

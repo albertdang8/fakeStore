@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { CartContext } from "../../contexts/CartContext";
 
 function Card({ product }) {
-  const { cart, addToCart, handleRemove } = useContext(CartContext);
+  const { cart, addItem, removeItem } = useContext(CartContext);
   const { id, title, category, price, image } = product;
 
   const [isFavorite, setIsFavorite] = useState(false);
@@ -23,12 +23,12 @@ function Card({ product }) {
             {isFavorite ? (
               <AiFillHeart
                 style={{ color: "red" }}
-                onClick={() => handleRemove(product.id)}
+                onClick={() => removeItem(product.id)}
               />
             ) : (
               <AiFillHeart
                 style={{ color: "#fff" }}
-                onClick={() => addToCart(product)}
+                onClick={() => addItem(product)}
               />
             )}
           </span>

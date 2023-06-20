@@ -8,22 +8,21 @@ import { CartContext } from "../../contexts/CartContext";
 import Modal from "react-modal";
 
 function Cart() {
-  const { cart, setCart, handleRemove } = useContext(CartContext);
+  const { cart, setCart, removeItem } = useContext(CartContext);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [totalAmount, setTotalAmount] = useState(0);
 
   const calcTotal = () => {
     let initial = 0;
-    let amount = 1;
-    cart.map((item) => {
-      initial += amount * item.price;
+    cart.forEach((item) => {
+      initial += item.price;
     });
     setTotalAmount(initial);
   };
 
   useEffect(() => {
     calcTotal();
-  });
+  }, [cart]); // Recalculate total when cart changes
 
   useEffect(() => {
     const cartStored = localStorage.getItem("cartItems");
@@ -57,23 +56,23 @@ function Cart() {
               <th>Remove</th>
             </tr>
           </thead>
-          {cart?.map((item) => (
-            <tbody>
-              <tr>
+          <tbody>
+            {cart.map((item, index) => (
+              <tr key={index}>
                 <td className="item">
                   <img src={item.image} alt="" />
                   {item.title}
                 </td>
-                <td>$ {item.price}</td>
+                <td>$ {item.price.toFixed(2)}</td>
                 <td>1</td>
                 <td>
-                  <BsTrash onClick={() => handleRemove(item.id)} />
+                  <BsTrash onClick={() => removeItem(item.id)} />
                 </td>
               </tr>
-            </tbody>
-          ))}
+            ))}
+          </tbody>
         </table>
-        <p>Total ${totalAmount}</p>
+        <p>Total ${totalAmount.toFixed(2)}</p>
         <button onClick={() => setModalIsOpen(true)}>Checkout</button>
       </div>
 

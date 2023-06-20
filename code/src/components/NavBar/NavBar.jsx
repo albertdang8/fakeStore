@@ -6,7 +6,6 @@ import axios from "axios";
 function Category({ products, setProducts }) {
   const [categories, setCategories] = useState([]);
 
-  //Calling categories dynamic
   useEffect(() => {
     axios.get(`https://fakestoreapi.com/products/categories`).then((res) => {
       setCategories(res.data);
@@ -27,13 +26,24 @@ function Category({ products, setProducts }) {
     });
   };
 
+  const capitalize = (str) => {
+    return str
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  };
+
   return (
     <div className="category-btn">
       <button onClick={handleClickAll}>All</button>
 
-      {categories.map((list, index) => (
-        <button key={index} id={list} onClick={() => handleClick(list)}>
-          {list}
+      {categories.map((category, index) => (
+        <button
+          key={index}
+          id={category}
+          onClick={() => handleClick(category)}
+        >
+          {capitalize(category)}
         </button>
       ))}
     </div>

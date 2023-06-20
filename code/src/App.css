@@ -1,3 +1,8 @@
+:root {
+    --primary-color: #3a4895;
+    --text-darkColor: #282828;
+}
+
 html {
     font-size: 16px;
     background-color: #f8f8f8;
@@ -7,6 +12,8 @@ html {
 *,
 *::before,
 *::after {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
@@ -18,9 +25,7 @@ html {
 
 body {
     position: relative;
-    /* for the footer */
     min-height: 100vh;
-    /* for the footer */
 }
 
 img,
@@ -36,9 +41,4 @@ textarea,
 button,
 select {
     font: inherit;
-}
-
-:root {
-    --primary-color: #3a4895;
-    --text-darkColor: #282828;
 }
