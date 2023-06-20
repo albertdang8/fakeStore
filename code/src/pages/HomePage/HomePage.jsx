@@ -1,44 +1,25 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import NavBar from "../../components/NavBar/NavBar";
-import Card from "../../components/Card/Card";
 import "./HomePage.css";
+import Card from "../../components/Card/Card";
+import NavBar from "../../components/NavBar/NavBar";
+import { useContext } from "react";
+import { CartContext } from "../../contexts/CartContext";
 
-function HomePage() {
-  const [products, setProducts] = useState([]); //gather all products
-  const [selectedCategory, setSelectedCategory] = useState('all');
-
-  useEffect(() => {
-    let apiUrl = 'https://fakestoreapi.com/products/';
-    if (selectedCategory !== 'all') {
-      apiUrl += `/category/${selectedCategory}`;
-    }
-
-    axios
-      .get(apiUrl)
-      .then((res) => {
-        console.log(res.data)
-        setProducts(res.data);
-      })
-      .catch((error) => {
-        console.log("Error:", error);
-      });
-  }, [selectedCategory]);
-
-  const handleCategoryClick = (category) => {
-    setSelectedCategory(category);
-  };
+function Home() {
+  const { products, setProducts } = useContext(CartContext);
 
   return (
-    <div className="page-body">
-      <NavBar data={products} onCategoryClick={handleCategoryClick} />
-      <div className="product-list">
-        {products.map((product) => (
-          <Card key={product.id} product={product} />
+    <div className="home-container">
+      <div className="category-container">
+        <NavBar setProducts={setProducts} />
+      </div>
+
+      <div className="products-container">
+        {products.map((item) => (
+          <Card key={item.id} product={item} />
         ))}
       </div>
     </div>
   );
 }
 
-export default HomePage;
+export default Home;

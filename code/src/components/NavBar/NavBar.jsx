@@ -1,33 +1,43 @@
 import React from "react";
 import "./NavBar.css";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
-function NavBar(props) {
-  function capitalizeWords(str) {
-    return str
-      .split(" ")
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(" ");
-  }
+function Category({ products, setProducts }) {
+  const [categories, setCategories] = useState([]);
 
-  const categories = [
-    "all",
-    ...new Set(props.data.map((item) => capitalizeWords(item.category))),
-  ];
+  //Calling categories dynamic
+  useEffect(() => {
+    axios.get(`https://fakestoreapi.com/products/categories`).then((res) => {
+      setCategories(res.data);
+    });
+  }, []);
+
+  const handleClick = (categories) => {
+    axios
+      .get(`https://fakestoreapi.com/products/category/${categories}`)
+      .then((res) => {
+        setProducts(res.data);
+      });
+  };
+
+  const handleClickAll = () => {
+    axios.get(`https://fakestoreapi.com/products`).then((res) => {
+      setProducts(res.data);
+    });
+  };
 
   return (
-    <div className="categories">
-      {categories.map((category) => (
-        <button
-          style={{ whiteSpace: "nowrap" }}
-          key={category}
-          className="navBar"
-          onClick={() => props.onCategoryClick(category)}
-        >
-          {capitalizeWords(category)}
+    <div className="category-btn">
+      <button onClick={handleClickAll}>All</button>
+
+      {categories.map((list, index) => (
+        <button key={index} id={list} onClick={() => handleClick(list)}>
+          {list}
         </button>
       ))}
     </div>
   );
 }
 
-export default NavBar;
+export default Category;

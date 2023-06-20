@@ -1,29 +1,21 @@
-.footerContainer {
+.footer {
+    height: 66px;
+    background-color: var(--primary-color);
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    background-color: #3A4895;
-    height: min(65px);
-    padding: 0 2rem;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+}
+
+.footer p {
+    color: #fcfcfc;
     font-size: 12px;
+    font-weight: 400;
 }
 
-.caption {
-    color: #FCFCFC;
-}
-
-.contact {
+.footer a {
+    color: #fcfcfc;
+    font-size: 15px;
+    font-weight: 400;
     text-decoration: none;
-    color: #FCFCFC;
-}
-
-@media screen and (max-width: 768px) {
-    /* TabletCSS goes here*/
-}
-
-@media screen and (max-width: 480px) {
-    /* Mobile CSS goes here*/
 }

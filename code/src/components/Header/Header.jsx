@@ -1,22 +1,22 @@
-import React from "react";
 import "./Header.css";
-import { BsCart3 } from "react-icons/bs";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from "../../contexts/CartContext";
 
 function Header() {
+  const { cart } = useContext(CartContext);
+
   return (
-    <nav className="navHead">
-      <Link to={"/"} className="main-title">
-        Fake Store
+    <div className="header-container">
+      <Link to="/">
+        <h2>Fake Store</h2>
       </Link>
-        <Link to="/checkout" className="cart-container">
-          <BsCart3 size={32} alt="shopping cart" className="cart-icon" />
-        <div className="cart-size">
-          <img src="src\assets\dot.png" alt="dot" className="dot" />
-          <p id="cart-number">1</p>
-        </div>
-        </Link>
-    </nav>
+      <Link to="/cart">
+        <AiOutlineShoppingCart className="cart-item" />
+        <span>{cart.length}</span>
+      </Link>
+    </div>
   );
 }
 

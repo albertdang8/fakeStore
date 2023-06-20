@@ -1,29 +1,26 @@
-.categories {
-    display: flex;
-}
-
-.navBar {
-    text-decoration: none;
-    color: #5264C3;
-    font-size: 1.25rem;
-    margin: 20px 28px 20px 0
-}
-
-.categories button {
+.category-btn button {
+    background: none;
     border: none;
-    background-color: transparent;
+    margin-right: 28px;
+    font-size: 20px;
+    color: #5264c3;
     cursor: pointer;
-    border: 2px solid transparent; /*so the hover effect doesn't rattle the page*/
 }
 
-.categories button:hover{
-    border-bottom: 2px solid #5264C3;
+
+@media screen and (max-width: 850px) {
+    .category-btn {
+        display: flex;
+        justify-content: space-between;
+    }
 }
 
-@media screen and (max-width: 768px) {
-    /* TabletCSS goes here*/
-}
 
 @media screen and (max-width: 480px) {
-    /* Mobile CSS goes here*/
+    .category-btn {
+        width: 400px;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
 }

@@ -1,55 +1,51 @@
-import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import axios from "axios";
-
+import React from "react";
 import "./ProductDetail.css";
+import { CgEuro } from "react-icons/cg";
+import { useState, useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
+import axios from "axios";
+import { useContext } from "react";
 import { CartContext } from "../../contexts/CartContext";
 
 function ProductDetail() {
-  const { cart, addItem, removeItem } = useContext(CartContext);
-  const { productId } = useParams();
   const [product, setProduct] = useState("");
-  const [isInCart, setIsInCart] = useState(false);
+  const [added, setAdded] = useState(false);
+  const { id, title, description, price, image } = product;
+
+  const { addToCart, handleRemove, cart } = useContext(CartContext);
+
+  const { productId } = useParams();
 
   useEffect(() => {
     axios
       .get(`https://fakestoreapi.com/products/${productId}`)
       .then((res) => {
         setProduct(res.data);
-        console.log(product);
-        // Check if the product is already in the cart
-        setIsInCart(cart.some((item) => item.id === res.data.id));
       })
-      .catch((err) => console.log("Error: ", err));
-  }, [productId, cart]);
-
-  const handleAddToCart = () => {
-    if (isInCart) {
-      removeItem(product.id);
-    } else {
-      addItem(product);
-    }
-  };
+      .catch((error) => console.log(error));
+  }, []);
 
   return (
-    <div className="page">
-      <div className="product-container">
-        <div>
-          <img className="product-img" src={product.image} />
-        </div>
-        <div className="product-info">
-          <h1 id="title">{product.title}</h1>
-          <p id="price">${product.price}</p>
-          <p id="sub-title">Description</p>
-          <p id="description">{product.description}</p>
-          <button id="add" onClick={handleAddToCart}>
-            {isInCart ? "Remove Item" : "Add to Cart"}
-          </button>
+    <div className="product-container">
+      <div className="product-box">
+        <img src={image} alt="" />
+        <div className="product-details">
+          <h3>{title}</h3>
+          <h3>
+            {price}
+            <CgEuro />
+          </h3>
+          <span>Description</span>
+          <p>{description}</p>
+          {cart.find((item) => item.id === product.id) ? (
+            <button onClick={() => handleRemove(id)}>Remove from Cart</button>
+          ) : (
+            <button onClick={() => addToCart(product)}>Add to Cart</button>
+          )}
         </div>
       </div>
     </div>
   );
 }
-
 
 export default ProductDetail;

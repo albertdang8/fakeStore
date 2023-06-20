@@ -1,13 +1,16 @@
-import { Link } from 'react-router-dom';
-import React from 'react';
+import React from "react";
 import "./Footer.css";
+import { AiFillHeart } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <div className='footerContainer'>
-        <div className="caption">Made with ❤️ by mimo </div>
-        <Link to="/contact" className="contact">Contact Us</Link>
-    </div>
+    <footer className="footer">
+      <p>
+        Made with <AiFillHeart /> by Fabio Lanza
+      </p>
+      <Link to="/contact">Contact us</Link>
+    </footer>
   );
 }
 

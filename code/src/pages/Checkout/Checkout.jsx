@@ -1,24 +1,38 @@
-import React, { useContext, useState } from "react";
+import React from "react";
+import "./Checkout.css";
+import { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
+import { BsTrash } from "react-icons/bs";
+import { AiOutlineClose } from "react-icons/ai";
 import { CartContext } from "../../contexts/CartContext";
-import { FaTrash } from "react-icons/fa";
-import { Link } from 'react-router-dom';
 import Modal from "react-modal";
 
-import "./Checkout.css";
+function Cart() {
+  const { cart, setCart, handleRemove } = useContext(CartContext);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [totalAmount, setTotalAmount] = useState(0);
 
-function Checkout() {
-  const [isOpen, setIsOpen] = useState(false); //modal state initialized to closed
-  const { clearCart } = useContext(CartContext);
+  const calcTotal = () => {
+    let initial = 0;
+    let amount = 1;
+    cart.map((item) => {
+      initial += amount * item.price;
+    });
+    setTotalAmount(initial);
+  };
 
-  const openModal = () => {
-    setIsOpen(true);
-  };
-  const closeModal = () => {
-    setIsOpen(false);
-  };
-  
+  useEffect(() => {
+    calcTotal();
+  });
+
+  useEffect(() => {
+    const cartStored = localStorage.getItem("cartItems");
+    if (cartStored !== null) {
+      setCart(JSON.parse(cartStored));
+    }
+  }, []);
+
   const customStyles = {
-    //modal styles
     content: {
       top: "50%",
       left: "50%",
@@ -27,65 +41,59 @@ function Checkout() {
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
     },
-    overlay: {
-      backgroundColor: "rgba(0, 0, 0, 0.6)",
-    },
   };
 
   Modal.setAppElement(document.getElementById("root"));
 
   return (
-    <div className="checkout-container">
-      <h1>Checkout</h1>
-
-      <div className="checkout-table">
-        <div className="table">
-          <div className="table-header">
-            <div className="table-cell">Item</div>
-            <div className="table-cell">Price</div>
-            <div className="table-cell">Quantity</div>
-            <div className="table-cell">Remove</div>
-          </div>
-          <div>
-            {/* Render rows for each item in the cart */}
+    <div className="cart-container">
+      <div className="cart-box">
+        <table>
+          <thead>
             <tr>
-              <td>Item 1</td>
-              <td>$10</td>
-              <td>1</td>
-              <td>
-                <button className="remove-button">
-                  <FaTrash />
-                </button>
-              </td>
+              <th>Item</th>
+              <th>Price</th>
+              <th>Qnty</th>
+              <th>Remove</th>
             </tr>
-            {/* Add more rows for other items */}
-          </div>
-        </div>
-
-        <div className="total-section">
-          <p>Total: $100</p>
-          <button className="checkout-button" onClick={openModal}>
-            Checkout
-          </button>
-
-          <Modal
-            isOpen={isOpen}
-            onRequestClose={closeModal}
-            style={customStyles}
-            contentLabel="Order status: complete!"
-          >
-            <div className="modal-box">
-              <h2 className="boop-down">Your Order was successful!</h2>
-              <p>Check your email for the order confirmation.</p>
-              <p className="boop-down"> Thank you for shapping with Fake Store!</p>
-              <Link to="/" onClick={clearCart}>Return to Main Page</Link>
-            </div>
-          </Modal>
-
-        </div>
+          </thead>
+          {cart?.map((item) => (
+            <tbody>
+              <tr>
+                <td className="item">
+                  <img src={item.image} alt="" />
+                  {item.title}
+                </td>
+                <td>$ {item.price}</td>
+                <td>1</td>
+                <td>
+                  <BsTrash onClick={() => handleRemove(item.id)} />
+                </td>
+              </tr>
+            </tbody>
+          ))}
+        </table>
+        <p>Total ${totalAmount}</p>
+        <button onClick={() => setModalIsOpen(true)}>Checkout</button>
       </div>
+
+      <Modal isOpen={modalIsOpen} style={customStyles} contentLabel="modal">
+        <div className="modal-box">
+          <AiOutlineClose onClick={() => setModalIsOpen(false)} />
+          <div className="modal-content">
+            <p>Your Order was successful!</p>
+            <p>
+              Check your email for the order confirmation. Thank you for
+              shopping with Fake Store!
+            </p>
+          </div>
+          <Link to="/">
+            <button>Return to MainPage</button>
+          </Link>
+        </div>
+      </Modal>
     </div>
   );
 }
 
-export default Checkout;
+export default Cart;
